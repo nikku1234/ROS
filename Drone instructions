@@ -1,0 +1,77 @@
+Topic list
+Shell
+	$ rostopic list
+
+
+take off
+	$ rostopic pub /drone/takeoff std_msgs/Empty "{}"
+
+land
+	$ rostopic pub /drone/land std_msgs/Empty "{}"
+
+topic info
+	$ rostopic info /drone/posctrl
+
+output
+
+Type: std_msgs/Bool
+ 
+Publishers:
+* /my_node (http://ip-172-31-35-31:45972/)
+ 
+Subscribers:
+* /gazebo (http://10.8.0.1:44685/)
+
+
+bool msg
+	rosmsg show std_msgs/Bool
+
+std_msgs/Bool
+	bool data
+
+The Bool message is very simple. It contains only one attribute called data with the type bool. Let’s try to send a message to this topic! Before we publish to the topic, we set up a monitor first with
+
+
+monitor
+	rostopic echo /drone/posctrl
+
+
+pos_ctrlPython
+in jupyeter 
+
+	from std_msgs.msg import Bool
+ 
+	var_bool = Bool()
+	pub_posctrl = rospy.Publisher('/drone/posctrl',Bool,queue_size = 1)
+	var_bool.data = True
+	pub_posctrl.publish(var_bool)
+
+
+
+pos_ctrl monitor
+
+data: True
+
+which means the message is published correctly. We enable the position control function on the drone successfully. Similarly, you can move the drone by publishing Twist message to the /cmd_vel topic. Here is an example script
+
+move the drone
+
+	from geometry_msgs.msg import Twist
+ 
+	var_twist = Twist()
+	pub_position = rospy.Publisher('/cmd_vel', Twist, queue_size=1)
+	var_twist.linear.x = 1
+	var_twist.linear.y = 1
+	var_twist.linear.z = 2
+	pub_position.publish(var_twist)
+
+
+
+
+
+
+
+
+
+
+
