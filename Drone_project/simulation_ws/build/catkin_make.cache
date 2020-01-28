@@ -1,0 +1,2 @@
+parrot_ardrone/ardrone_as:parrot_ardrone/custom_teleop:parrot_ardrone/drone_construct:parrot_ardrone/drone_demo:parrot_ardrone/sjtu_drone
+-DCATKIN_DEVEL_PREFIX=/home/user/simulation_ws/devel -DCMAKE_INSTALL_PREFIX=/home/user/simulation_ws/install -G Unix Makefiles
